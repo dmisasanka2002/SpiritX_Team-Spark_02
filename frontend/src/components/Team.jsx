@@ -287,7 +287,7 @@ const Team = ({
                         </Text>
                         <Button 
                           type="primary" 
-                          onClick={() => setSelectedTab("selection")} 
+                          onClick={() => setSelectedTab("selectTeam")} 
                           style={{
                             marginTop: '16px',
                             background: 'linear-gradient(135deg, #FF9900, #F5811E)',
