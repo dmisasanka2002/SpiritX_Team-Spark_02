@@ -20,11 +20,13 @@ import {
   TeamOutlined,
   BarChartOutlined,
   UserOutlined,
+  RobotOutlined
 } from "@ant-design/icons";
 import { fetchPlayers } from "../api/player"; // Mock API for players
 import Leaderboard from "../components/Leaderboard";
 import TeamSelection from "./TeamSelection";
 import Team from "../components/Team";
+import Chatbot from "../components/Chatbot";
 
 const { Header, Content, Sider } = Layout;
 const { Option } = Select;
@@ -126,6 +128,9 @@ const AdminPanel = () => {
           <Menu.Item key="leaderboard" icon={<BarChartOutlined />}>
             Leaderboard
           </Menu.Item>
+          <Menu.Item key="chatbot" icon={<RobotOutlined />}>
+          Spiriter
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
@@ -195,9 +200,13 @@ const AdminPanel = () => {
           )}
 
           {selectedTab === "team" && (
-            
-              <Team team={team} setTeam={setTeam} remainingBudget={remainingBudget} setRemainingBudget={setRemainingBudget} setSelectedTab={setSelectedTab}/>
-            
+            <Team
+              team={team}
+              setTeam={setTeam}
+              remainingBudget={remainingBudget}
+              setRemainingBudget={setRemainingBudget}
+              setSelectedTab={setSelectedTab}
+            />
           )}
 
           {selectedTab === "leaderboard" && (
@@ -205,6 +214,12 @@ const AdminPanel = () => {
               {/* <Title level={2}>Leaderboard</Title> */}
               {/* {getLeaderboard()} */}
               <Leaderboard />
+            </Card>
+          )}
+
+          {selectedTab === "chatbot" && (
+            <Card>
+              <Chatbot baseMassage={""}/>
             </Card>
           )}
         </Content>

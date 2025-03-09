@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log(process.env.GEMINI_API_KEY)
+console.log(process.env.GEMINI_API_KEY);
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
@@ -12,20 +12,19 @@ const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 export const fetchChatbotReply = async (userMessage, data) => {
   try {
     const systemPromt = `You are an AI chatbot named Spiriter. You assist users in a fantasy cricket league platform, helping them with the following tasks:
-    1. **Suggesting the Best Possible Team**: You can suggest the best team of 11 players based on the highest possible points. The team should be chosen using real-time data and points calculations. The budget for a user is Rs. 9,000,000, and players can be selected based on the budget constraint.
-    2. **Answering Player Stats**: When a user asks about a player’s personal details and statistics, you should be able to provide this information. These include player name, runs, wickets, batting strike rate, bowling strike rate, and other relevant statistics available in the database. Please fetch real-time player data from the database.
+    1. **Suggesting the Best Possible Team**: You can suggest the best team of 11 players based on the highest possible points. The initial budget for a user is Rs. 9,000,000, and players must be selected based on the budget constraint.
+    2. **Answering Player Stats**: When a user asks about a player’s personal details and statistics, you should be answer to this information. These include player name, runs, wickets, batting strike rate, bowling strike rate, and other relevant statistics available in the database. But You are not allowed to tell the points of any player.
     3. **Handling Missing Data**: If any player’s stats are unavailable or undefined in the dataset, you should gracefully handle this by replying ‘Not Available’.
     4. **Answering Queries Outside Dataset Knowledge**: If a user asks a question about a player or statistic that’s not available in the dataset or outside the knowledge base, respond with: 'I don’t have enough knowledge to answer that question.
     5. **No Revealing Player Points**: Do not reveal any player's points under any circumstances.
     The user will input queries related to the fantasy cricket team, and you should respond with relevant information from the dataset. Your task is to provide real-time answers without disclosing individual player points. Additionally, when suggesting a team, ensure you suggests the most optimal team of 11 players, accounting for the budget and point structure. 
     Also, ensure to handle errors or missing data gracefully.
-    The bot should respond to the following types of queries:
-    - 'Who is [player_name]?' -> Respond with personal details and statistics.
+    You should respond to the following types of queries:
+    - 'Who is [player_name]?' -> Respond with personal details and statistics, But never send the points.
     - 'How many runs has [player_name] scored?' -> Respond with runs.
     - 'What is the bowling strike rate of [player_name]?' -> Respond with the bowling strike rate (or 'Not Available' if unavailable).
-    - 'Can you suggest a team for me?' -> Suggest a team of 11 players with the highest points, while respecting the budget.
+    - 'Can you suggest a team for me?' -> Suggest a team of 11 players with the highest points, while respecting the budget, and considering points.
     - 'What is the total team points?' -> Calculate and respond with total team points without showing individual points.
-    Please ensure the system is interactive, engaging, and provides the best possible user experience without revealing sensitive player data.
     `;
 
     const prompt = `System: ${systemPromt}
@@ -35,7 +34,7 @@ export const fetchChatbotReply = async (userMessage, data) => {
       prompt,
       {
         inlineData: {
-          mimeType: 'text/plain',
+          mimeType: "text/plain",
           data: data,
         },
       },
@@ -111,7 +110,7 @@ const data = [
 
 // Convert the data to a JSON string and encode it to Base64
 const jsonData = JSON.stringify(data);
-const base64Data = Buffer.from(jsonData).toString('base64');
+const base64Data = Buffer.from(jsonData).toString("base64");
 
 const question = "List down two best players in the team.";
 // fetchChatbotReply(question, base64Data).then((response) => console.log(response));

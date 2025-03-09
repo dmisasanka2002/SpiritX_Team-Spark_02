@@ -32,7 +32,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/players", playerRoutes);
-app.use("/api/chatbot", chatbotRoutes);
+app.use("/api/chat", chatbotRoutes);
 
 // Database Connection
 mongoose
