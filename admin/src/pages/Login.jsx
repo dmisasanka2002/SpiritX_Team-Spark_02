@@ -110,11 +110,11 @@ const Login = () => {
                 rules={[{ required: true, message: "Please enter your username" }]}
               >
                 <Input 
-                  prefix={<UserOutlined style={{ color: "rgba(255, 153, 0, 0.8)" }} />} 
+                  prefix={<UserOutlined style={{ color: "rgba(0, 0, 0, 0.8)" }} />} 
                   placeholder="Username" 
                   size="large"
                   style={{ 
-                    backgroundColor: "rgba(34, 34, 34, 0.8)", 
+                    backgroundColor: "rgba(255, 255, 255, 0.8)", 
                     color: "white", 
                     borderColor: "#FF9900",
                     borderRadius: "6px"
@@ -127,11 +127,11 @@ const Login = () => {
                 rules={[{ required: true, message: "Please enter your password" }]}
               >
                 <Input.Password 
-                  prefix={<LockOutlined style={{ color: "rgba(255, 153, 0, 0.8)" }} />} 
+                  prefix={<LockOutlined style={{ color: "rgba(0, 0, 0, 0.8)" }} />} 
                   placeholder="Password" 
                   size="large"
                   style={{ 
-                    backgroundColor: "rgba(34, 34, 34, 0.8)", 
+                    backgroundColor: "rgba(255, 255, 255, 0.8)", 
                     color: "white", 
                     borderColor: "#FF9900",
                     borderRadius: "6px"

@@ -196,11 +196,11 @@ const Signup = () => {
                     style={{ marginBottom: "16px" }}
                   >
                     <Input
-                      prefix={<UserOutlined style={{ color: "rgba(255, 153, 0, 0.8)" }} />}
+                      prefix={<UserOutlined style={{ color: "rgba(0, 0, 0, 0.8)" }} />}
                       placeholder="Username"
                       size="large"
                       style={{ 
-                        backgroundColor: "rgba(34, 34, 34, 0.8)", 
+                        backgroundColor: "rgb(255, 255, 255)", 
                         color: "white", 
                         borderColor: "#FF9900",
                         borderRadius: "6px"
@@ -217,11 +217,11 @@ const Signup = () => {
                     style={{ marginBottom: "16px" }}
                   >
                     <Input
-                      prefix={<MailOutlined style={{ color: "rgba(255, 153, 0, 0.8)" }} />}
+                      prefix={<MailOutlined style={{ color: "rgba(0, 0, 0, 0.8)" }} />}
                       placeholder="Email"
                       size="large"
                       style={{ 
-                        backgroundColor: "rgba(34, 34, 34, 0.8)", 
+                        backgroundColor: "rgb(255, 255, 255)", 
                         color: "white", 
                         borderColor: "#FF9900",
                         borderRadius: "6px"
@@ -233,15 +233,15 @@ const Signup = () => {
                     name="password"
                     rules={passwordValidationRules}
                     hasFeedback
-                    style={{ marginBottom: "4px" }}
+                    style={{ marginBottom: "16px" }}
                   >
                     <Input.Password
-                      prefix={<LockOutlined style={{ color: "rgba(255, 153, 0, 0.8)" }} />}
+                      prefix={<LockOutlined style={{ color: "rgba(0, 0, 0, 0.8)" }} />}
                       placeholder="Password"
                       size="large"
                       onChange={(e) => setPasswordValue(e.target.value)}
                       style={{ 
-                        backgroundColor: "rgba(34, 34, 34, 0.8)", 
+                        backgroundColor: "rgb(255, 255, 255)", 
                         color: "white", 
                         borderColor: "#FF9900",
                         borderRadius: "6px"
@@ -285,11 +285,11 @@ const Signup = () => {
                     style={{ marginBottom: "24px" }}
                   >
                     <Input.Password
-                      prefix={<LockOutlined style={{ color: "rgba(255, 153, 0, 0.8)" }} />}
+                      prefix={<LockOutlined style={{ color: "rgba(0, 0, 0, 0.8)" }} />}
                       placeholder="Confirm Password"
                       size="large"
                       style={{ 
-                        backgroundColor: "rgba(34, 34, 34, 0.8)", 
+                        backgroundColor: "rgb(255, 255, 255)", 
                         color: "white", 
                         borderColor: "#FF9900",
                         borderRadius: "6px"
@@ -305,7 +305,7 @@ const Signup = () => {
                       block
                       size="large"
                       style={{
-                        borderRadius: "30px",
+                        borderRadius: "5px",
                         background: "linear-gradient(90deg, rgba(255, 153, 0, 1) 0%, rgba(255, 180, 50, 1) 100%)",
                         border: "none",
                         fontSize: "16px",
