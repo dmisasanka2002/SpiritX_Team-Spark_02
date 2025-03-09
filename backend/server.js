@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes.js";
 import chatbotRoutes from "./routes/chatbotRoutes.js";
 import playerRoutes from "./routes/playerRoutes.js";
+import teamRoutes from "./routes/teamRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -32,6 +33,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/players", playerRoutes);
+app.use("api/teams", teamRoutes);
 app.use("/api/chat", chatbotRoutes);
 
 // Database Connection
