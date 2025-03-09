@@ -1,0 +1,6 @@
+MONGO_URI=""
+JWT_SECRET="This is a Secret"
+CLIENT_URL=[http://localhost:5173, http://localhost:5174]
+
+ADMIN_URL = http://localhost:5173
+GEMINI_API_KEY = ""

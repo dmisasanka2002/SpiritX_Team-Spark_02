@@ -23,8 +23,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
               {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-              <Route path="/teamselection" element={<TeamSelection />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
+              {/* <Route path="/teamselection" element={<TeamSelection />} />
+              <Route path="/leaderboard" element={<Leaderboard />} /> */}
               <Route path="*" element={<Login />} />
             </Routes>
           </Router>
