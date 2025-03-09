@@ -22,6 +22,9 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { fetchPlayers } from "../api/player"; // Mock API for players
+import Leaderboard from "../components/Leaderboard";
+import TeamSelection from "./TeamSelection";
+import Team from "../components/Team";
 
 const { Header, Content, Sider } = Layout;
 const { Option } = Select;
@@ -126,20 +129,24 @@ const AdminPanel = () => {
         </Menu>
       </Sider>
       <Layout>
-        <Header style={{ background: "#001529", color: "#fff", textAlign: "center" }}>
+        <Header
+          style={{ background: "#001529", color: "#fff", textAlign: "center" }}
+        >
           Admin Panel
         </Header>
         <Content style={{ padding: 20 }}>
           {selectedTab === "home" && (
             <Card>
               <Title level={2}>Welcome to the Admin Panel</Title>
-              <p>Manage players, view statistics, and analyze tournament data.</p>
+              <p>
+                Manage players, view statistics, and analyze tournament data.
+              </p>
             </Card>
           )}
 
           {selectedTab === "selectTeam" && (
             <Card>
-              <Title level={2}>Select Your Team</Title>
+              {/* <Title level={2}>Select Your Team</Title>
               <Row gutter={16}>
                 <Col span={8}>
                   <Button
@@ -176,40 +183,28 @@ const AdminPanel = () => {
                     />
                   </List.Item>
                 )}
+              /> */}
+              <TeamSelection
+                team={team}
+                setTeam={setTeam}
+                remainingBudget={remainingBudget}
+                setRemainingBudget={setRemainingBudget}
+                setSelectedTab={setSelectedTab}
               />
             </Card>
           )}
 
           {selectedTab === "team" && (
-            <Card>
-              <Title level={2}>Your Team</Title>
-              <p>{teamSize}/11 players selected</p>
-              <List
-                dataSource={team}
-                renderItem={(player) => (
-                  <List.Item
-                    actions={[
-                      <Button danger onClick={() => handlePlayerRemove(player._id)}>
-                        Remove
-                      </Button>,
-                    ]}
-                  >
-                    <List.Item.Meta
-                      title={player.name}
-                      description={`University: ${player.university}`}
-                    />
-                  </List.Item>
-                )}
-              />
-              <p>Total Points: {getTotalPoints()}</p>
-              <p>Remaining Budget: Rs. {remainingBudget}</p>
-            </Card>
+            
+              <Team team={team} setTeam={setTeam} remainingBudget={remainingBudget} setRemainingBudget={setRemainingBudget} setSelectedTab={setSelectedTab}/>
+            
           )}
 
           {selectedTab === "leaderboard" && (
             <Card>
-              <Title level={2}>Leaderboard</Title>
-              {getLeaderboard()}
+              {/* <Title level={2}>Leaderboard</Title> */}
+              {/* {getLeaderboard()} */}
+              <Leaderboard />
             </Card>
           )}
         </Content>

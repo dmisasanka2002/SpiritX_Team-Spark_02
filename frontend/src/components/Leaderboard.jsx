@@ -159,7 +159,6 @@ const Leaderboard = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: 'url(/path-to-your-background-image.jpg)', // Replace with your image path
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.15,
@@ -176,7 +175,7 @@ const Leaderboard = () => {
         }} />
         
         <Content>
-          <Card bordered={false} style={{ 
+          <Card variant={false} style={{ 
             background: 'rgba(0, 0, 0, 0.7)',
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
             borderRadius: '10px',
@@ -185,7 +184,8 @@ const Leaderboard = () => {
             <Title level={2} style={{ 
               color: '#FF9900', 
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-              marginBottom: '20px'
+              marginBottom: '20px',
+              textAlign: 'center'
             }}>
               Tournament Leaderboard
             </Title>
