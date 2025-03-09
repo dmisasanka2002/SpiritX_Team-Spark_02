@@ -13,16 +13,6 @@ export const fetchPlayers = async () => {
   }
 };
 
-// export const addPlayer = async (playerData) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/add`, playerData);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error adding player:", error);
-//     throw error;
-//   }
-// };
-
 export const addPlayer = async (playerData) => {
   try {
     const response = await axios.post(`${API_URL}/add`, playerData, {

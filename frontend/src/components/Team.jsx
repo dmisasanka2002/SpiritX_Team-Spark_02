@@ -23,7 +23,7 @@ const Team = ({
 
   // Calculate team stats
   const getTotalPoints = () => {
-    return team.reduce((total, player) => total + (player.rating || 0), 0);
+    return team.reduce((total, player) => total + (player.points || 0), 0);
   };
 
   const getTeamSize = () => team.length;
