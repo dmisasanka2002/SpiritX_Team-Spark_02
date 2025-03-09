@@ -1,11 +1,23 @@
 import Player from '../models/playerModel.js';
+import { calculatePlayerPoints, valueInRupees } from '../utils/playerUtils.js';
 
 // Create a new player (Admin Only)
 export const createPlayer = async (req, res) => {
     // console.log(req.body)
     try {
+      const points = await calculatePlayerPoints(req.body);
+      const valuePrice = await valueInRupees(points);
+
+      console.log(points, valuePrice)
+
       console.log('Creating player...');
-      const player = new Player(req.body);
+      const playerData = {
+        ...req.body,
+        points: points,
+        valuePrice: valuePrice
+      };
+
+      const player = new Player(playerData);
       console.log(player)
       const result = await player.save();
       console.log(result)
@@ -22,6 +34,11 @@ export const createPlayer = async (req, res) => {
 // Update a player (Admin Only)
 export const updatePlayer = async (req, res) => {
     try {
+      const points = await calculatePlayerPoints(req.body);
+      const valuePrice = await valueInRupees(points);
+      req.body.points = points;
+      req.body.valuePrice = valuePrice;
+
       const player = await Player.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
       if (!player) {
         return res.status(404).json({ message: 'Player not found' });

@@ -22,17 +22,22 @@ const TeamSelection = ({
  
   const loadPlayers = async () => { 
     const data = await fetchPlayers(); 
+    console.log(data)
     setPlayers(data); 
   }; 
  
   const handlePlayerSelect = (player) => { 
-    if (team.length < 11) { 
+    if (team.length < 11 ) { 
       if (team.some((p) => p._id === player._id)) { 
         alert("Player already in your team!"); 
         return; 
       } 
+      else if (remainingBudget < player.valuePrice) {
+        alert("Insufficient budget to select this player!");
+        return;
+      }
       setTeam([...team, player]); 
-      setRemainingBudget(remainingBudget - player.value); 
+      setRemainingBudget(remainingBudget - player.valuePrice); 
     } else {
       alert("You can select a maximum of 11 players!");
     }
@@ -177,7 +182,7 @@ const TeamSelection = ({
                         border: 'none',
                       }}
                     >
-                      Select (${player.value})
+                      Select (Rs. {player.valuePrice})
                     </Button>,
                   ]}
                 >

@@ -39,6 +39,16 @@ const playerSchema = new mongoose.Schema({
     type: Number,
     default: 0, // Default value if not provided
   },
+  points: {
+    type: Number,
+    required: true,
+    default: 0, // Default value if not provided
+  },
+  valuePrice: {
+    type: Number,
+    required: true,
+    default: 0, // Default value if not provided
+  },
 });
 
 // Create the Mongoose model from the schema
