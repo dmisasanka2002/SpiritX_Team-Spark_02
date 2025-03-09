@@ -10,6 +10,7 @@ export const login = async (credentials) => {
   try {
     // Send the credentials to the backend
     const response = await axios.post(`${API_URL}/login`, credentials, { withCredentials: true });
+    console.log(response)
 
     // The token is automatically handled in the cookie, so no need to store it on the frontend
     return response;

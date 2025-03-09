@@ -42,11 +42,12 @@ export const protect = async (req, res, next) => {
 
 // Middleware for admin access only
 export const admin = (req, res, next) => {
-  next() // Remove this line to enable admin access only
+  // next() // Remove this line to enable admin access only
+  console.log(req.user.isAdmin)
   
-  // if (req.user && req.user.isAdmin) {
-  //   next(); // If user is an admin, allow the request to proceed
-  // } else {
-  //   res.status(403).json({ message: "Access denied. Admins only." });
-  // }
+  if (req.user && req.user.isAdmin) {
+    next(); // If user is an admin, allow the request to proceed
+  } else {
+    res.status(403).json({ message: "Access denied. Admins only." });
+  }
 };
