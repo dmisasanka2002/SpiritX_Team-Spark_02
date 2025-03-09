@@ -12,7 +12,21 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+
+const whitelist = process.env.CLIENT_URL;
+console.log(whitelist);
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 // Routes
@@ -21,10 +35,10 @@ app.use("/api/players", playerRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 
 // Database Connection
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB Connected"))
-.catch((err) => console.error("MongoDB Connection Error:", err));
-
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error("MongoDB Connection Error:", err));
 
 // Start Server
 const PORT = process.env.PORT || 5000;
